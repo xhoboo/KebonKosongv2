@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f2d18">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Kebun Kosong</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="hud">
+    <div class="stat-pill">🪙 <span id="hCoins">100</span></div>
+    <div class="weather-pill" id="weatherPill" title="Cuaca saat ini">☀️ Cerah</div>
+    <button id="btnAchHud" class="btn-ach-hud">🏆 <span id="achBadge">0/100</span></button>
+    <button class="btn-stats-hud" id="tab-stats">📊 <span class="hud-btn-label">Statistik</span></button>
+    <button class="btn-music-hud" id="btnMusic" title="Toggle Musik">🎵</button>
+    <button id="btnResetHud" class="btn-reset-hud">🗑 <span class="hud-btn-label">Reset</span></button>
+  </div>
+</header>
+
+<audio id="bgMusic" src="audio/Harvest Loop.mp3" loop></audio>
+
+<!-- RESET MODAL (copied so Reset works on index page) -->
+<div class="modal-bg" id="resetModal">
+  <div class="modal-box">
+    <h2>⚠️ Reset Game?</h2>
+    <p>Semua progress akan dihapus permanen dan game dimulai dari awal. Yakin?</p>
+    <div class="modal-btns">
+      <button id="resetConfirmBtn" class="m-confirm">Ya, Reset</button>
+      <button id="resetCancelBtn" class="m-cancel">Batal</button>
+    </div>
+  </div>
+</div>
+
+<div class="home-container">
+  <div class="home-title">&#x1F3E1; Rumah</div>
+  <div class="home-subtitle">Mau ke mana kita?</div>
+
+  <div class="home-buttons">
+    <a class="home-btn btn-rumah" href="inventory.html">
+      <div class="home-btn-icon">&#x1F392;</div>
+      <div class="home-btn-label">Inventory</div>
+      <div class="home-btn-sub">Lihat barang dan hasil panen</div>
+    </a>
+    <a class="home-btn btn-rumah" href="kebun.html">
+      <div class="home-btn-icon">&#x1F33E;</div>
+      <div class="home-btn-label">Kebun</div>
+      <div class="home-btn-sub">Tanam dan panen tanaman</div>
+    </a>
+    <a class="home-btn btn-hutan" href="hutan.html">
+      <div class="home-btn-icon">&#x1F332;</div>
+      <div class="home-btn-label">Hutan</div>
+      <div class="home-btn-sub">Petualangan Tak Berujung</div>
+    </a>
+    <a class="home-btn btn-rumah" href="memancing.html">
+      <div class="home-btn-icon">&#x1F3A3;</div>
+      <div class="home-btn-label">Memancing</div>
+      <div class="home-btn-sub">Pancing ikan di sungai, danau, laut</div>
+    </a>
+    <a class="home-btn btn-rumah" href="kerajinan.html">
+      <div class="home-btn-icon">&#x1F528;</div>
+      <div class="home-btn-label">Kerajinan</div>
+      <div class="home-btn-sub">Buat umpan dari bahan inventory</div>
+    </a>
+    <a class="home-btn btn-rumah" href="masakan.html">
+      <div class="home-btn-icon">&#x1F373;</div>
+      <div class="home-btn-label">Memasak</div>
+      <div class="home-btn-sub">Olah hidangan dari hasil panen</div>
+    </a>
+  </div>
+</div>
+
+<div class="notif" id="notif"></div>
+
+<script src="js/data/plants.js"></script>
+<script src="js/data/grades.js"></script>
+<script src="js/data/fish.js"></script>
+<script src="js/data/bait.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/data/upgrades.js"></script>
+<script src="js/achievements.js"></script>
+<script src="js/data/recipes.js"></script>
+<script src="js/craft_recipes.js"></script>
+<script src="js/game.js"></script>
+<script src="js/init-handlers.js"></script>
+</body>
+</html>
+

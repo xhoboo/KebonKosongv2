@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f2d18">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>🌿 Kebon Kosong</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER (XP ONLY) -->
+<header>
+  <div class="hud">
+    <div class="xp-group">
+      <div class="level-badge" id="lvlBadge">1</div>
+      <div class="xp-wrap">
+        <div class="xp-bar-bg"><div class="xp-bar-fill" id="xpFill" style="width:0%"></div></div>
+        <div class="xp-label" id="xpLabel">XP Kebun: 0 / 100</div>
+      </div>
+    </div>
+    <a class="btn-home-hud" href="index.html" title="Kembali ke Rumah">&#x1F3E1; Rumah</a>
+  </div>
+</header>
+
+<audio id="bgMusic" src="audio/Harvest Loop.mp3" loop></audio>
+
+<!-- AUTO-SLOT SEED CHOOSER MODAL -->
+<div class="modal-bg" id="autoSlotModal">
+  <div class="modal-box auto-slot-modal-box">
+    <div class="auto-slot-modal-title">🤖 Pilih Bibit untuk Slot Otomatis</div>
+    <div class="auto-slot-seed-list" id="autoSlotSeedList"></div>
+    <div class="modal-btns" style="margin-top:14px">
+      <button class="m-cancel" id="autoSlotCancelBtn">Batal</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESET MODAL -->
+<div class="modal-bg" id="resetModal">
+  <div class="modal-box">
+    <h2>⚠️ Reset Game?</h2>
+    <p>Semua progress akan dihapus permanen dan game dimulai dari awal. Yakin?</p>
+    <div class="modal-btns">
+      <button id="resetConfirmBtn" class="m-confirm">Ya, Reset</button>
+      <button id="resetCancelBtn" class="m-cancel">Batal</button>
+    </div>
+  </div>
+</div>
+
+<!-- BUY SLOT MODAL -->
+<div class="modal-bg" id="buySlotModal">
+  <div class="modal-box">
+    <h2>🔓 Buka Petak</h2>
+    <p id="buySlotText">Konfirmasi pembelian petak?</p>
+    <div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end;">
+      <button class="m-confirm" id="buySlotConfirmBtn">Beli</button>
+      <button id="buySlotCancelBtn" class="m-cancel">Batal</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: TOKO BIBIT ══ -->
+<div class="page" id="page-shop">
+  <div class="shop-page">
+    <div class="panel" style="margin-bottom:12px">
+      <div class="panel-title">🛒 Toko Bibit</div>
+      <div class="shop-filters" id="shopFilters"></div>
+    </div>
+    <div class="shop-grid" id="shopGrid"></div>
+  </div>
+</div>
+
+<!-- ══ PAGE: KEBUN ══ -->
+<div class="page active" id="page-garden">
+  <div class="garden-page">
+    <div class="garden-left">
+      <div class="garden-sidebar">
+        <div id="selectedSeedBox" class="selected-seed-box" title="Klik untuk ganti benih">
+          <div class="ssb-emoji" id="ssbEmoji">🌱</div>
+          <div class="ssb-name" id="ssbName">Pilih Benih</div>
+          <div class="ssb-hint">Klik → Toko Bibit</div>
+        </div>
+      </div>
+      <div class="garden-log panel">
+        <div class="panel-title"> Aktivitas</div>
+        <div class="log-list" id="logList"></div>
+      </div>
+    </div>
+    <div class="garden-main">
+      <div class="garden-top">
+        <button class="btn-plant-all" id="btnPlantAll">🌱 Tanam Semua</button>
+        <button class="btn-harvest-all" id="btnHarvestAll" disabled>🌾 Panen Semua</button>
+        <button class="btn-auto-slot" id="btnActivateAutoSlot" style="display:none">🤖 Aktifkan Slot Auto</button>
+      </div>
+      <div class="garden-grid" id="grid"></div>
+    </div>
+  </div>
+</div>
+
+<div class="notif" id="notif"></div>
+
+<!-- ══ PAGE: ACHIEVEMENT ══ -->
+<div class="page" id="page-achievements">
+  <div class="ach-page">
+    <div class="panel" style="margin-bottom:12px">
+      <div class="panel-title">🏆 Achievement &amp; Upgrade</div>
+      <p style="color:#aaa;font-size:0.82rem;margin:4px 0 0">Selesaikan achievement untuk mendapatkan upgrade. Klik <strong>Klaim!</strong> untuk mengaktifkan upgrade.</p>
+    </div>
+    <div id="achGrid"></div>
+  </div>
+</div>
+
+<div class="page" id="page-stats">
+  <div class="stats-page">
+    <div class="stats-summary" id="statsSummary"></div>
+    <div class="stats-acc" id="statsAcc"></div>
+  </div>
+</div>
+
+<script src="js/data/plants.js"></script>
+<script src="js/data/grades.js"></script>
+<script src="js/data/fish.js"></script>
+<script src="js/data/bait.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/data/upgrades.js"></script>
+<script src="js/achievements.js"></script>
+<script src="js/data/recipes.js"></script>
+<script src="js/craft_recipes.js"></script>
+<script src="js/game.js"></script>
+<script src="js/init-handlers.js"></script>
+</body>
+</html>

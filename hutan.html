@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f2d18">
+<title>🌲 Hutan — Petualangan Tak Berujung</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="hud">
+    <a class="btn-home-hud" href="index.html" title="Kembali ke Rumah">🏠 Rumah</a>
+  </div>
+</header>
+
+<div class="hutan-page">
+
+  <div class="hutan-record-card">
+    <div>
+      <span class="hutan-record-val"><span id="record">0</span></span><span class="hutan-record-unit">meter</span>
+    </div>
+  </div>
+
+  <div class="hutan-status-card">
+    <div class="hutan-status-top">
+      <div class="hutan-title">🌲 Petualangan Tak Berujung</div>
+      <div class="hutan-meter-pill">📍 Jarak: <b><span id="meter">0</span> m</b></div>
+    </div>
+    <div class="hutan-hp-wrap">
+      <span class="hutan-hp-icon">❤️</span>
+      <div class="hutan-hp-track"><div id="hpFill" class="hutan-hp-fill"></div></div>
+      <div class="hutan-hp-text"><span id="hpText">100 / 100</span></div>
+    </div>
+  </div>
+
+  <div id="journal" class="hutan-journal" aria-live="polite"></div>
+
+  <div class="hutan-actions">
+    <button id="jalanBtn" class="hutan-jalan-btn">🚶 Jalan</button>
+  </div>
+
+</div>
+
+<audio id="bgMusic" src="audio/Harvest Loop.mp3" loop></audio>
+
+<script src="js/data/hutan_pools.js"></script>
+<script src="js/data/hutan_drops.js"></script>
+<script src="js/hutan.js"></script>
+</body>
+</html>

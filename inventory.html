@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f2d18">
+<title>Inventory — Kebun Kosong</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER (shared) -->
+<header>
+  <div class="hud">
+    <a class="btn-home-hud" href="index.html" title="Kembali ke Rumah">🏠 Rumah</a>
+  </div>
+</header>
+
+<audio id="bgMusic" src="audio/Harvest Loop.mp3" loop></audio>
+
+<!-- SELL MODAL -->
+<div class="modal-bg" id="sellModal">
+  <div class="modal-box sell-modal-box">
+    <div class="sell-modal-hdr">
+      <span class="sell-modal-emoji" id="sellModalEmoji"></span>
+      <div>
+        <div class="sell-modal-name" id="sellModalName"></div>
+        <div class="sell-modal-grade" id="sellModalGrade"></div>
+      </div>
+    </div>
+    <div class="sell-qty-wrap">
+      <button id="sellQtyMinus10Btn" class="sell-qty-btn">−10</button>
+      <button id="sellQtyMinus1Btn" class="sell-qty-btn">−</button>
+      <span class="sell-qty-val" id="sellModalQty">1</span>
+      <button id="sellQtyPlus1Btn" class="sell-qty-btn">+</button>
+      <button id="sellQtyPlus10Btn" class="sell-qty-btn">+10</button>
+    </div>
+    <div class="sell-modal-val" id="sellModalValue">🪙 0</div>
+    <div class="modal-btns">
+      <button id="sellConfirmBtn" class="m-confirm">💰 Jual <span id="sellModalBtnQty">1</span></button>
+      <button id="sellConfirmAllBtn" class="m-confirm" style="background:#e65100">Jual Semua</button>
+      <button id="sellCancelBtn" class="m-cancel">Batal</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: INVENTORY (moved to its own file) ══ -->
+<div class="page active" id="page-inv">
+  <div class="inv-page">
+    <div class="panel">
+      <div class="inv-tab-bar">
+        <button class="inv-tab-btn active" id="invTabHarvest">🌾 Hasil Panen</button>
+        <button class="inv-tab-btn"        id="invTabFish">🐟 Hasil Pancingan</button>
+        <button class="inv-tab-btn"        id="invTabEgg">🥚 Telur Ikan</button>
+        <button class="inv-tab-btn"        id="invTabLoot">🎒 Loot Hutan</button>
+      </div>
+
+      <!-- Sub-panel: Hasil Panen -->
+      <div id="invPanelHarvest">
+        <div class="inv-top-bar">
+          <div class="inv-filters">
+            <select class="inv-filter-select" id="invFilterCat">
+              <option value="">Semua Jenis</option>
+              <option>Bunga</option><option>Sayuran</option><option>Buah</option><option>Biji</option><option>Herbal</option>
+            </select>
+            <select class="inv-filter-select" id="invFilterRarity">
+              <option value="">Semua Rarity</option>
+              <option>Common</option><option>Uncommon</option><option>Rare</option>
+              <option>Very Rare</option><option>Epic</option><option>Legendary</option><option>Mythical</option>
+            </select>
+            <select class="inv-filter-select" id="invFilterGrade">
+              <option value="">Semua Grade</option>
+              <option>C</option><option>B</option><option>A</option><option>S</option><option>SS</option>
+            </select>
+          </div>
+          <div class="inv-actions">
+            <div class="inv-total-val" id="invTotalVal">🪙 0</div>
+            <button class="inv-sell-all-btn" id="invSellAllBtn" disabled>💰 Jual Semua</button>
+          </div>
+        </div>
+        <div class="inv-cards" id="invGrid">
+          <div class="inv-empty-msg">🎒 Belum ada hasil panen.</div>
+        </div>
+      </div>
+
+      <!-- Sub-panel: Hasil Pancingan -->
+      <div id="invPanelFish" style="display:none">
+        <div class="inv-top-bar">
+          <div class="inv-filters">
+            <select class="inv-filter-select" id="invFilterFishLoc">
+              <option value="">Semua Lokasi</option>
+              <option value="sungai">Sungai</option>
+              <option value="danau">Danau</option>
+              <option value="laut">Laut</option>
+            </select>
+            <select class="inv-filter-select" id="invFilterFishRarity">
+              <option value="">Semua Rarity</option>
+              <option>Common</option><option>Uncommon</option><option>Rare</option>
+              <option>Very Rare</option><option>Epic</option><option>Legendary</option><option>Mythical</option>
+            </select>
+            <select class="inv-filter-select" id="invFilterFishGrade">
+              <option value="">Semua Grade</option>
+              <option>C</option><option>B</option><option>A</option><option>S</option><option>SS</option>
+            </select>
+          </div>
+          <div class="inv-actions">
+            <div class="inv-total-val" id="fishInvTotalVal">🪙 0</div>
+            <button class="inv-sell-all-btn" id="fishSellAllBtn" disabled>💰 Jual Semua</button>
+          </div>
+        </div>
+        <div class="inv-cards" id="fishInvGrid">
+          <div class="inv-empty-msg">🐟 Belum ada hasil pancingan.</div>
+        </div>
+      </div>
+
+
+
+      <!-- Sub-panel: Telur Ikan -->
+      <div id="invPanelEgg" style="display:none">
+        <div class="inv-top-bar">
+          <div class="inv-total-val" id="eggInvTotalVal">🪙 0</div>
+          <button class="inv-sell-all-btn" id="eggSellAllBtn" disabled>💰 Jual Semua</button>
+        </div>
+        <div class="inv-cards" id="eggInvGrid">
+          <div class="inv-empty-msg">🥚 Belum ada telur. Masukkan ikan ke Kolam Ikan!</div>
+        </div>
+      </div>
+
+      <div id="invPanelLoot" style="display:none">
+        <div class="inv-top-bar">
+          <div class="inv-total-val" id="lootInvTotalVal">🎒 0 barang / 🪙 0</div>
+          <div class="inv-actions">
+            <button class="inv-sell-all-btn" id="lootSellAllBtn" disabled>💰 Jual Semua</button>
+          </div>
+        </div>
+        <div class="inv-cards" id="lootInvGrid">
+          <div class="inv-empty-msg">🎒 Belum ada loot hutan. Jalan-jalan ke Hutan dulu!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notif" id="notif"></div>
+
+<script src="js/data/plants.js"></script>
+<script src="js/data/grades.js"></script>
+<script src="js/data/fish.js"></script>
+<script src="js/data/bait.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/data/upgrades.js"></script>
+<script src="js/achievements.js"></script>
+<script src="js/data/recipes.js"></script>
+<script src="js/craft_recipes.js"></script>
+<script src="js/game.js"></script>
+<script src="js/init-handlers.js"></script>
+</body>
+</html>
